@@ -20,9 +20,13 @@ up:
 docker:
 	docker-compose up --build
 
-.PHONY: parse_news
-parse_news:
-	scrapy runspider scrapper/spiders/news/parse_news.py
+.PHONY: parse_news_test
+parse_news_test:
+	export OUTPUT_PATH=test_parsed.json && scrapy runspider scrapper/spiders/news/parse_news.py -a path=test_dataset_test.csv
+
+.PHONY: parse_news_train
+parse_news_train:
+	export OUTPUT_PATH=train_parsed.json && scrapy runspider scrapper/spiders/news/parse_news.py -a path=train_dataset_train.csv
 
 .PHONY: venv
 venv:

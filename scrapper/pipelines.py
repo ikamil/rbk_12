@@ -1,11 +1,12 @@
 import json
 import logging
+import os
 import typing as t
 
 from itemadapter import ItemAdapter
 from scrapy.spiders import Spider
 
-from definitions import DATA_DIR
+from definitions import PARSED_DATA_DIR
 from scrapper.items import AuthorItem, NewsItem, PostItem, TopicItem
 
 log = logging.getLogger(__name__)
@@ -15,7 +16,7 @@ class ScrapyMFDPipeline:
     total = 0
     count = 0
 
-    filename = DATA_DIR / 'parsed' / 'TEST_DATA.json'
+    filename = PARSED_DATA_DIR / os.environ.get('OUTPUT_PATH', 'parsed.json')
 
     with open(filename, mode='w', encoding='utf-8') as f:
         pass

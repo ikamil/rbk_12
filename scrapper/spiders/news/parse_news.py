@@ -6,7 +6,7 @@ import pandas as pd
 from scrapy import Request, Spider
 from scrapy.http import Response
 
-from definitions import DATA_DIR
+from definitions import INPUT_DATA_DIR
 from scrapper.spiders.news.parse_one_new import parse_one_new
 
 dd, dt = datetime.datetime, datetime.timedelta
@@ -21,11 +21,9 @@ class NewsSpider(Spider):
     def __init__(
         self,
         path: str = 'train_data_train.csv',
-        save_path: str = 'train_parsed.csv',
         **kwargs,
     ):
-        self.data = pd.read_csv(DATA_DIR / path)
-        self.save_path = save_path
+        self.data = pd.read_csv(INPUT_DATA_DIR / path)
         super().__init__(**kwargs)
 
     def parse_news(self, response: Response) -> Iterator[Any]:
