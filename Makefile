@@ -1,6 +1,6 @@
 TESTS = tests
 VENV ?= .venv
-CODE = scrapper app src
+CODE = scrapper src
 
 ifeq ($(OS), Windows_NT)
 SOURCE := $(VENV)/Scripts
