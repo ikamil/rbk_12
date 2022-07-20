@@ -86,4 +86,25 @@ def parse_one_new(response: Response, base_url: str) -> t.Iterator[t.Any]:
     news, result = news_compose(news_item)
     if result:
         news['document_id'] = response.meta['document_id']
+        news['keywords_parsed'] = (
+            response.xpath("//head/meta[@name='keywords']/@content")
+            .get()
+            .split(', ')
+        )
+        news['twitter_card_parsed'] = response.xpath(
+            "//head/meta[@name='twitter:card']/@content"
+        ).get()
+        news['twitter_image_parsed'] = response.xpath(
+            "//head/meta[@name='twitter:image']/@content"
+        ).get()
+        news['vk_image_parsed'] = response.xpath(
+            "//head/meta[@name='vk:image']/@content"
+        ).get()
+        news['yandex_recommendation_image_parsed'] = response.xpath(
+            "//head/meta[@property='yandex_recommendations_image']/@content"
+        ).get()
+        news['yandex_recommendation_category_parsed'] = response.xpath(
+            "//head/meta[@property='yandex_recommendations_category']/@content"
+        ).get()
+
         yield news
