@@ -1,6 +1,6 @@
 import pandas as pd
 
-from app.transformers.base import Transformer
+from src.transformers.base import Transformer
 
 
 class TextTransformer(Transformer):
@@ -8,17 +8,29 @@ class TextTransformer(Transformer):
         input_data['num_words_text'] = (
             input_data['news_text_parsed'].str.split().apply(lambda x: len(x))
         )
-        input_data['num_words_overview'] = (
-            input_data['news_text_overview_parsed']
-            .str.split()
-            .apply(lambda x: len(x))
-        )
-        input_data['num_words_text_2'] = input_data['news_text_parsed'].apply(
-            lambda x: len(x)
-        )
-        input_data['num_words_overview_2'] = input_data[
-            'news_text_overview_parsed'
-        ].apply(lambda x: len(x))
+        # input_data['num_words_overview'] = (
+        #     input_data['news_text_overview_parsed']
+        #     .str.split()
+        #     .apply(lambda x: len(x))
+        # )
+        # input_data['num_of_sentence_text'] = input_data[
+        #     'news_text_parsed'
+        # ].apply(lambda x: len(nltk.sent_tokenize(x)))
+
+        # input_data['num_of_sentence'] = input_data[
+        #     'news_text_overview_parsed'
+        # ].apply(lambda x: len(nltk.sent_tokenize(x)))
+        # input_data['DIVIDE'] = input_data['num_words_text'] / input_data['num_of_sentence_text']
+        # input_data['CTR'] = input_data['ctr'] * input_data['DIVIDE']
+        # input_data['CTR'] = input_data['ctr'] / input_data['DIVIDE']
+        # input_data['is_na_overwiew'] = input_data['news_text_overview_parsed'].apply(lambda x: x if len(x) == 0 else None).isna()
+
+        # input_data['num_words_text_2'] = input_data['news_text_parsed'].apply(
+        #     lambda x: len(x)
+        # )
+        # input_data['num_words_overview_2'] = input_data[
+        #     'news_text_overview_parsed'
+        # ].apply(lambda x: len(x))
         # if self.kwargs.get('use_text_transformer') is not None:
 
         # input_data['WOW_PERCENT_WORKS_2'] = input_data['num_words_overview'] / input_data['num_words_text']

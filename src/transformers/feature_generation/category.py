@@ -1,6 +1,6 @@
 import pandas as pd
 
-from app.transformers.base import Transformer
+from src.transformers.base import Transformer
 
 
 class CategoryTransformer(Transformer):
@@ -12,4 +12,7 @@ class CategoryTransformer(Transformer):
         input_data['category_from_title'] = input_data[
             'category_from_title'
         ].isna()
+
+        # for start, end in [[9, 15]]:
+        #     input_data[f'{start}_{end}'] = input_data['document_id'].apply(lambda x: x[start:end]).astype('category')
         return input_data

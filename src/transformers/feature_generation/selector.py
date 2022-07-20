@@ -1,7 +1,7 @@
 import pandas as pd
 
-from app.constants import FeaturesConstants
-from app.transformers.base import Transformer
+from src.constants import FeaturesConstants
+from src.transformers.base import Transformer
 
 
 class FeatureSelector(Transformer):

@@ -1,7 +1,7 @@
 import pandas as pd
 
-from app.transformers.base import Transformer
 from definitions import INPUT_DATA_DIR, PARSED_DATA_DIR
+from src.transformers.base import Transformer
 
 
 class LoaderMergePreprocess(Transformer):

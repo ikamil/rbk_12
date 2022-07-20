@@ -13,3 +13,5 @@ INPUT_DATA_DIR = DATA_DIR / 'input'
 PARSED_DATA_DIR = DATA_DIR / 'parsed'
 
 FULL_DATA_DIR = DATA_DIR / 'full'
+
+AUTHORS_DIR = DATA_DIR / 'authors'

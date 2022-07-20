@@ -2,7 +2,7 @@ from typing import List
 
 import pandas as pd
 
-from app.constants import FeaturesConstants
+from src.constants import FeaturesConstants
 
 
 def predict_for_exist(

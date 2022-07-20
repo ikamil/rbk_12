@@ -1,3 +1,6 @@
+from string import punctuation
+
+import nltk
 import numpy as np
 import pandas as pd
 from nltk.corpus import stopwords
@@ -6,6 +9,8 @@ from sklearn.feature_extraction.text import (
     TfidfTransformer,
     TfidfVectorizer,
 )
+
+nltk.download('stopwords')
 
 
 class CountTfIdfVectorizer:
@@ -102,20 +107,27 @@ class TfidfVectorTransformer:
             sublinear_tf=False,
         ),
         use_stop_words: bool = True,
+        use_filtered_punct: bool = True,
     ):
         self.col = col
         self.tfidf_vectorizer = tfidf_vectorizer
         self.use_stop_words = use_stop_words
         self.stopwords = stopwords.words('russian')
+        self.use_filtered_punct = use_filtered_punct
 
     def fit(self, X, split=False):
         text = X[self.col].dropna()
         if split:
             text = text.apply(lambda x: x.split())
         texts: pd.Series = text.apply(
-            lambda x: ' '.join(x)
+            lambda x: x
             if self.use_stop_words is False
-            else ' '.join([word for word in x if word not in self.stopwords])
+            else [word for word in x if word not in self.stopwords]
+        )
+        texts: pd.Series = texts.apply(
+            lambda x: ' '.join(x)
+            if self.use_filtered_punct is False
+            else ' '.join([word for word in x if word not in punctuation])
         )
         self.tfidf_vectorizer.fit_transform(texts)
         return self

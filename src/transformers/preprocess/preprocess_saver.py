@@ -1,7 +1,7 @@
 import pandas as pd
 
-from app.transformers.base import Transformer
 from definitions import FULL_DATA_DIR
+from src.transformers.base import Transformer
 
 
 class SaverPreprocess(Transformer):

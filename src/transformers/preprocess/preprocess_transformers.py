@@ -14,8 +14,8 @@ from natasha import (
 )
 from tqdm import tqdm
 
-from app.constants import FeaturesConstants
-from app.transformers.base import Transformer
+from src.constants import FeaturesConstants
+from src.transformers.base import Transformer
 
 segmenter = Segmenter()
 morph_vocab = MorphVocab()
@@ -98,7 +98,14 @@ class FeaturePreprocess(Transformer):
             'news_inline_titles',
         ]
         image = ['news_has_image', 'news_image_title']
-
+        others = [
+            'keywords_parsed',
+            'twitter_card_parsed',
+            'twitter_image_parsed',
+            'vk_image_parsed',
+            'yandex_recommendation_image_parsed',
+            'yandex_recommendation_category_parsed',
+        ]
         output = input_data[
             identifier
             + int_features
@@ -111,6 +118,7 @@ class FeaturePreprocess(Transformer):
             + text_features
             + between_text_features
             + image
+            + others
         ]
         if mode == 'train':
             output = pd.concat(

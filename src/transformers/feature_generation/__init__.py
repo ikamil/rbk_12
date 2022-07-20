@@ -2,6 +2,7 @@ from .authors import AuthorsTransformer
 from .category import CategoryTransformer
 from .ctr import CTRTransformer
 from .date import DatetimeTransformer
+from .multilabel import MultiLabelTransformer
 from .selector import FeatureSelector
 from .tags import TagsTransformer
 from .text import NatashaTextTransformer, TextTransformer
@@ -20,4 +21,5 @@ __all__ = (
     'NatashaTextTransformer',
     'TfidfVectorTransformer',
     'CountTfIdfVectorizer',
+    'MultiLabelTransformer',
 )
