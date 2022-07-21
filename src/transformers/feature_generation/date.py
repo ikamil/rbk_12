@@ -1,11 +1,6 @@
-
-import holidays
 import pandas as pd
 
 from src.transformers.base import Transformer
-
-russia_holidays_list = holidays.Russia(years=[2021, 2022]).items()
-russia_holidays_list = [str(x[0]) for x in russia_holidays_list]
 
 
 def get_part_day(x):
