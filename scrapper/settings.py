@@ -22,9 +22,7 @@ CONCURRENT_REQUESTS = 16
 RETRY_HTTP_CODES = [500, 502, 503, 504, 522, 524, 408, 429, 403]
 RETRY_TIMES = 3
 
-# ROTATING_PROXY_LIST = [
-#     "https://shirokov-aa:E6c6uShtidUy@outsource-analytics.dp.wb.ru:8080/"
-# ]
+
 # #
 # DOWNLOADER_MIDDLEWARES = {
 #     'rotating_proxies.middlewares.RotatingProxyMiddleware': 610,
